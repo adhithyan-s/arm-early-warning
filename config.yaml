@@ -1,0 +1,13 @@
+data:
+  ecdc_url: "https://www.ecdc.europa.eu/..."
+  raw_path: "data/raw/"
+  processed_path: "data/processed/"
+
+model:
+  test_size: 0.2
+  random_state: 42
+  forecast_horizon_years: 2
+
+mlflow:
+  tracking_uri: "mlruns/"
+  experiment_name: "amr-resistance-forecasting"
