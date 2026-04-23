@@ -1,1 +1,21 @@
+# data
+data/raw/
+data/processed/
+
+# models
+models/*.pkl
+models/*.joblib
+
+# MLflow
+mlruns/
+mlflow.db
+
+# python
 .venv/
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# macOS
+.DS_Store
