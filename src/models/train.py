@@ -11,6 +11,7 @@ from pathlib import Path
 import logging
 import yaml
 import joblib
+import json
 
 from src.data.loaders import load_ecdc_data
 from src.data.validators import validate_ecdc_data
@@ -234,6 +235,18 @@ def train_lightgbm(
         model_dir.mkdir(exist_ok=True)
         joblib.dump(model, model_dir / "lgbm_model.pkl")
         logger.info(f"Model saved to models/lgbm_model.pkl")
+
+        metadata = {
+            "feature_cols": FEATURE_COLS,
+            "feature_medians": X_train.median().to_dict(),
+            "cutoff_year": 2020,
+            "forecast_horizon": 2,
+            "model_type": "LightGBM",
+            "metrics": metrics,
+        }
+        with open(model_dir / "model_metadata.json", "w") as f:
+            json.dump(metadata, f, indent=2)
+        logger.info("Model metadata saved to models/model_metadata.json")
 
         return metrics
     
