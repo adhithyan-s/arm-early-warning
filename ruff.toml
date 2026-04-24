@@ -1,11 +1,17 @@
 exclude = [
     ".venv",
-    "*.egg-info",
+    "**/*.egg-info",
     "__pycache__",
-    "*.ipynb",
+    "**/*.ipynb",
     ".git",
+    "build",
 ]
 
 [lint]
 select = ["E", "F", "W"]
-ignore = ["E402"]
+ignore = [
+    "E501",
+    "E402",
+    "W291",
+    "W293",
+]

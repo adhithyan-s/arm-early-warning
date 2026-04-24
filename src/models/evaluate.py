@@ -31,7 +31,7 @@ def compute_metrics(y_true: np.ndarray, y_pred: np.ndarray) -> dict:
     if len(y_true) == 0:
         logger.warning("No valid rows to evaluate — all targets were NaN")
         return {"mae": np.nan, "rmse": np.nan, "r2": np.nan, "n_samples": 0}
-    
+
     mae = mean_absolute_error(y_true, y_pred)
     rmse = np.sqrt(mean_squared_error(y_true, y_pred))
     r2 = r2_score(y_true, y_pred)
@@ -89,7 +89,7 @@ def plot_predictions(
     )
 
     plt.tight_layout()
-    
+
     if save_path:
         Path(save_path).parent.mkdir(parents=True, exist_ok=True)
         plt.savefig(save_path, dpi=150, bbox_inches="tight")

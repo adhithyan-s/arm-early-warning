@@ -49,7 +49,7 @@ def _load_model_and_metadata():
             f"Metadata file not found at {metadata_path}. "
             f"Run `python -m src.models.train` first."
         )
-    
+
     model = joblib.load(model_path)
     with open(metadata_path) as f:
         metadata = json.load(f)
@@ -151,7 +151,7 @@ class PredictionRequest(BaseModel):
                 f"Valid codes: {sorted(VALID_COUNTRY_CODES)}"
             )
         return v.upper()
-    
+
     @field_validator("pathogen")
     @classmethod
     def validate_pathogen(cls, v):
@@ -174,7 +174,7 @@ class PredictionRequest(BaseModel):
                     f"Valid combinations: {VALID_COMBINATIONS}"
                 )
         return v
-    
+
 
 class PredictionResponse(BaseModel):
     country_code:              str
@@ -284,7 +284,7 @@ def _get_warning_level(predicted_pct: float) -> tuple[str, str]:
             "Critical resistance level. Immediate public health action required. "
             "Consider this antibiotic ineffective for empirical treatment."
         )
-    
+
 
 # ---------------------------------------------------------------------------
 # Endpoints
@@ -325,7 +325,7 @@ def predict(request: PredictionRequest):
             status_code=503,
             detail="Model not loaded. Run training pipeline first."
         )
-    
+
     try:
         feature_vector = _build_feature_vector(request)
         prediction     = float(MODEL.predict(feature_vector)[0])

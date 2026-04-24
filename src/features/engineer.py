@@ -19,7 +19,7 @@ def _compute_lag_features(df: pd.DataFrame) -> pd.DataFrame:
             df.groupby(group_cols)["PctResistant"]
             .shift(lag)
         )
-    
+
     return df
 
 

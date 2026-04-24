@@ -40,7 +40,7 @@ ecdc_schema = DataFrameSchema(
         "CountryCode": Column(
             str,
             checks=Check(
-                lambda s: s.str.len().between(2, 3).all(), 
+                lambda s: s.str.len().between(2, 3).all(),
                 error="CountryCode must be 2-3 characters"
             ),
             nullable=False,
@@ -112,7 +112,7 @@ def validate_ecdc_data(df: pd.DataFrame) -> pd.DataFrame:
         logger.warning(
             f"Missing expected pathogen-antibiotic combinations: {missing_combos}"
         )
-    
+
     # 3. Check minimum row count — if we have fewer than 500 rows something went wrong with loading
     if len(df) < 500:
         raise ValueError(

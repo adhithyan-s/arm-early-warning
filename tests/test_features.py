@@ -44,8 +44,8 @@ def _make_group_df(
 def _make_multi_country_df() -> pd.DataFrame:
     """Two countries, same pathogen+antibiotic, 6 years each."""
     de = _make_group_df(
-        [5.0, 6.0, 7.0, 8.0, 9.0, 10.0], 
-        country="Germany", 
+        [5.0, 6.0, 7.0, 8.0, 9.0, 10.0],
+        country="Germany",
         country_code="DE"
     )
 
@@ -70,7 +70,7 @@ class TestLagFeatures:
         assert "lag_1yr" in result.columns
         assert "lag_2yr" in result.columns
         assert "lag_3yr" in result.columns
-    
+
     def test_lag_1yr_correct_values(self):
         df = _make_group_df([5.0, 10.0, 15.0, 20.0, 25.0])
         result = _compute_lag_features(df.copy())

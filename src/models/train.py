@@ -150,7 +150,7 @@ def train_baseline(
 
         logger.info(f"Ridge baseline: {metrics}")
         return metrics
-    
+
 
 def train_lightgbm(
         X_train, y_train, X_test, y_test,
@@ -247,7 +247,7 @@ def train_lightgbm(
         logger.info("Model metadata saved to models/model_metadata.json")
 
         return metrics
-    
+
 
 def _plot_feature_importance(model, save_path: str) -> None:
     """Bar chart of LightGBM feature importances."""

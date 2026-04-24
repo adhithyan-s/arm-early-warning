@@ -92,7 +92,7 @@ class TestParseEcdcFile:
 
         assert len(result) == 3
 
-    
+
 # ---------------------------------------------------------------------------
 # Tests for _load_combination
 # ---------------------------------------------------------------------------
@@ -130,7 +130,7 @@ class TestLoadCombination:
 
         assert result.iloc[0]["Pathogen"]   == "Klebsiella pneumoniae"
         assert result.iloc[0]["Antibiotic"] == "Carbapenems"
-    
+
     def test_num_isolates_derived_correctly(self, tmp_path):
         # 10 resistant out of 25% → total should be 40
         n_rows = [_make_fake_ecdc_row("DE", "Germany", 2020, 10.0)]
@@ -177,7 +177,7 @@ class TestLoadCombination:
 
         assert result is None
 
-    
+
 # ---------------------------------------------------------------------------
 # Tests for load_ecdc_data
 # ---------------------------------------------------------------------------

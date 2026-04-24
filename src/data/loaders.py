@@ -50,13 +50,13 @@ def _load_combination(raw_dir: Path, key: str, pathogen: str, antibiotic: str):
     if missing:
         logger.warning(f"Skipping {key} — missing files: {missing}")
         return None
-    
+
     df_n = _parse_ecdc_file(path_n).rename(columns={"Value": "NumResistant"})
     df_pct = _parse_ecdc_file(path_pct).rename(columns={"Value": "PctResistant"})
 
     # merge on the three identity columns
     df = pd.merge(df_n, df_pct, on=["Year", "CountryCode", "Country"], how="inner")
-    
+
     # derive total isolates from the 2 values we have
     # guard against division by 0 - if PctResistant is 0, NumIsolates is undefined
     df["NumIsolates"] = df.apply(
@@ -93,7 +93,7 @@ def load_ecdc_data(raw_path: str) -> pd.DataFrame:
             f"{df['Country'].nunique()} countries"
         )
         frames.append(df)
-    
+
     if not frames:
         raise FileNotFoundError(
             f"No data loaded from {raw_dir}. "
