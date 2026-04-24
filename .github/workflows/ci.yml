@@ -32,3 +32,6 @@ jobs:
 
       - name: Run tests
         run: pytest tests/ -v --tb=short
+
+      - name: Lint with ruff
+        run: ruff check src/ tests/ --exclude "*.ipynb"
