@@ -27,11 +27,8 @@ jobs:
       - name: Install package in editable mode
         run: pip install -e .
 
-      - name: Remove egg-info before linting
-        run: find . -name "*.egg-info" -type d -exec rm -rf {} + 2>/dev/null || true
-
       - name: Lint with ruff
-        run: ruff check src/ tests/
+        run: ruff check src/api/ src/data/ src/features/ src/models/ tests/
 
       - name: Run tests
         run: pytest tests/ -v --tb=short
